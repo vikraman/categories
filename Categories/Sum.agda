@@ -8,7 +8,7 @@ open import Data.Sum
 
 open import Categories.Category
 
-Sum : ∀ {o ℓ e o′ ℓ′ e′} (C : Category o ℓ e) (D : Category o′ ℓ′ e′) → Category _ _ _
+Sum : ∀ {o ℓ e o′ ℓ′ e′} (C : Category o ℓ e) (D : Category o′ ℓ′ e′) → Category (o ⊔ o′) (ℓ ⊔ ℓ′) (e ⊔ e′)
 Sum C D = record
   { Obj = C.Obj ⊎ D.Obj
   ; _⇒_ = λ { (inj₁ c₁) (inj₁ c₂) → C._⇒_ c₁ c₂
