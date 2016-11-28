@@ -21,6 +21,7 @@ record Iso {A B} (f : A ⇒ B) (g : B ⇒ A) : Set (o ⊔ ℓ ⊔ e) where
 
 infix 4 _≅_
 record _≅_ (A B : Obj) : Set (o ⊔ ℓ ⊔ e) where
+  constructor mk≅
   field
     f : A ⇒ B
     g : B ⇒ A
@@ -172,5 +173,5 @@ private
     open _≡ⁱ_
 
 heqⁱ : ∀ {A B} (i : A ≅ B) {A′ B′} (j : A′ ≅ B′) → let open _≅_ in let open Heterogeneous C in f i ∼ f j → g i ∼ g j → i ∼ⁱ j
-heqⁱ i j (Heterogeneous.≡⇒∼ eq-f) (Heterogeneous.≡⇒∼ eq-g)
-  = ≡⇒∼ⁱ {f = i} {g = j} (record { f-≡ = eq-f; g-≡ = eq-g })
+heqⁱ i (mk≅ f′ g′ iso′) (Heterogeneous.≡⇒∼ eq-f) (Heterogeneous.≡⇒∼ eq-g) =
+  ≡⇒∼ⁱ {f = i} {g = mk≅ f′ g′ iso′} (record { f-≡ = eq-f ; g-≡ = eq-g })
