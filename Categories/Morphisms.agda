@@ -36,7 +36,7 @@ G ⓘ F = record
   { f = G.f ∘ F.f
   ; g = F.g ∘ G.g
   ; iso = record
-    { isoˡ = 
+    { isoˡ =
       begin
         (F.g ∘ G.g) ∘ (G.f ∘ F.f)
       ↓⟨ assoc ⟩
@@ -50,7 +50,7 @@ G ⓘ F = record
       ↓⟨ F.isoˡ ⟩
         id
       ∎
-    ; isoʳ = 
+    ; isoʳ =
       begin
         (G.f ∘ F.f) ∘ (F.g ∘ G.g)
       ↓⟨ assoc ⟩

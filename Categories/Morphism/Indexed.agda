@@ -36,7 +36,7 @@ ihom-setoid {S} F Xs = record
   ; resp = λ {i} {j} i≈j → SΠ.resp-per′ (at′ i) (at′ j) (resp₁ i≈j) (resp₂ i≈j)
   }
   where
-  
+
   -- fake 'at' for resp
   at′ : Bc → Setoid _ _
   at′ i = record
@@ -108,7 +108,7 @@ f ◽ g = record { _⟨$⟩_ = λ x → (f ‼ x) ∘ (g ‼ x)
 .assoc-◽⋉ : ∀ {X Ys Zs Ws} {f : Zs ∗⇒∗ Ws} {g : Ys ∗⇒∗ Zs} {h : X ⇒∗ Ys}
           → (X ⇨∗ Ws) [ _⋉_ {Ys = Ys} {Ws} (_◽_ {Ys} {Zs} {Ws} f g) h ≈ _⋉_ {Ys = Zs} {Ws} f (_⋉_ {Ys = Ys} {Zs} g h) ]
 assoc-◽⋉ {Ys = Ys} {Zs} {Ws} {f = f} {g} {h} {i} {j} i≈j with Ys _⟶_.⟨$⟩ j | cong₀ Ys i≈j | Zs _⟶_.⟨$⟩ j | cong₀ Zs i≈j | Ws _⟶_.⟨$⟩ j | cong₀ Ws i≈j | f ‼ j | cong₁ f i≈j | g ‼ j | cong₁ g i≈j | h ‼ j | cong₁ h i≈j
-assoc-◽⋉ {f = f} {g} {h} {i} i≈j | ._ | ≣-refl | ._ | ≣-refl | ._ | ≣-refl | fj | ≡⇒∼ fi≡fj | gj | ≡⇒∼ gi≡gj | hj | ≡⇒∼ hi≡hj = 
+assoc-◽⋉ {f = f} {g} {h} {i} i≈j | ._ | ≣-refl | ._ | ≣-refl | ._ | ≣-refl | fj | ≡⇒∼ fi≡fj | gj | ≡⇒∼ gi≡gj | hj | ≡⇒∼ hi≡hj =
   ≡⇒∼ (begin
     ((f ‼ i) ∘ (g ‼ i)) ∘ (h ‼ i)
   ↓⟨ ∘-resp-≡ (∘-resp-≡ fi≡fj gi≡gj) hi≡hj ⟩
@@ -116,6 +116,6 @@ assoc-◽⋉ {f = f} {g} {h} {i} i≈j | ._ | ≣-refl | ._ | ≣-refl | ._ | �
   ↓⟨ assoc ⟩
     fj ∘ (gj ∘ hj)
   ∎)
-  where 
+  where
   open Heterogeneous C hiding (≡⇒∼)
   open HomReasoning
