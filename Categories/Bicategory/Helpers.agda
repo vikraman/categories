@@ -17,7 +17,7 @@ open import Categories.NaturalTransformation using (NaturalTransformation) renam
 open import Categories.Product using (Product; assocʳ; πˡ; πʳ)
 
 module BicategoryHelperFunctors {o ℓ t e} (Obj : Set o) (_⇒_ : (A B : Obj) → Category ℓ t e)
-    (—⊗— : {A B C : Obj} → Bifunctor (B ⇒ C) (A ⇒ B) (A ⇒ C)) 
+    (—⊗— : {A B C : Obj} → Bifunctor (B ⇒ C) (A ⇒ B) (A ⇒ C))
     (id : {A : Obj} → Functor {ℓ} {t} {e} OneC (A ⇒ A)) where
 
   open Terminal (One {ℓ} {t} {e})
