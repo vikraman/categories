@@ -19,7 +19,7 @@ open import Categories.NaturalIsomorphism
 open import Categories.Bicategory.Helpers using (module BicategoryHelperFunctors)
 
 record Bicategory (o ℓ t e : Level) : Set (suc (o ⊔ ℓ ⊔ t ⊔ e)) where
-  open Terminal (Categories ℓ t e) (One {ℓ} {t} {e})
+  open Terminal (One {ℓ} {t} {e})
   field
     Obj : Set o
     _⇒_ : (A B : Obj) → Category ℓ t e
@@ -42,8 +42,8 @@ record Bicategory (o ℓ t e : Level) : Set (suc (o ⊔ ℓ ⊔ t ⊔ e)) where
 
   field
     .triangle : {A B C : Obj} (f : A ⇒₁ B) (g : B ⇒₁ C) → EQ.Triangle f g
-    .pentagon : {A B C D E : Obj} (f : A ⇒₁ B) (g : B ⇒₁ C) (h : C ⇒₁ D) (i : D ⇒₁ E) 
+    .pentagon : {A B C D E : Obj} (f : A ⇒₁ B) (g : B ⇒₁ C) (h : C ⇒₁ D) (i : D ⇒₁ E)
         → EQ.Pentagon f g h i
 
-  -- do note that most of the "convenience" definitions in the Helpers module should really 
+  -- do note that most of the "convenience" definitions in the Helpers module should really
   -- be here (but usable in both places).  Clean that up later.
